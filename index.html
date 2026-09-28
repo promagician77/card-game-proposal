@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Card game production proposal with a live card layout and packaging demo.">
+<title>Card game production proposal - Josinaldo</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="f-deut"><feColorMatrix type="matrix" values="0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0"/></filter>
+  <filter id="f-prot"><feColorMatrix type="matrix" values="0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0"/></filter>
+  <filter id="f-gray"><feColorMatrix type="saturate" values="0"/></filter>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <div class="head">
+      <h1>Card game production proposal</h1>
+      <p>Prepared by Josinaldo</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Proposal sections">
+      <button role="tab" id="t-demo" aria-controls="demo" aria-selected="true" data-page="demo">Live demo</button>
+      <button role="tab" id="t-spec" aria-controls="spec" aria-selected="false" data-page="spec">Production specs</button>
+      <button role="tab" id="t-plan" aria-controls="plan" aria-selected="false" data-page="plan">Delivery</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="demo" role="tabpanel" aria-labelledby="t-demo">
+    <p class="intro">A working sample built on an invented game, "Lantern Market." Your game keeps its own concept and art direction - this shows how I set up cards and packaging so they print correctly and play well.</p>
+
+    <div class="studio">
+      <!-- CARD STUDIO -->
+      <div class="panelbox">
+        <div class="ph"><h2>Card layout</h2><span>One layout system, every card type</span></div>
+        <div class="cardstage" id="cardstage"></div>
+        <div class="picker" id="picker" role="radiogroup" aria-label="Choose a card"></div>
+        <div class="controls">
+          <div class="ctl">
+            <span class="cl">View</span>
+            <div class="seg" id="viewseg" role="radiogroup" aria-label="View">
+              <button data-view="print" aria-checked="true" role="radio">Print file</button>
+              <button data-view="trim" aria-checked="false" role="radio">Cut card</button>
+              <button data-view="hand" aria-checked="false" role="radio">In hand</button>
+            </div>
+          </div>
+          <div class="ctl">
+            <span class="cl">Show</span>
+            <div class="checks">
+              <label><input type="checkbox" data-ov="bleed" checked> Bleed</label>
+              <label><input type="checkbox" data-ov="trim" checked> Cut line</label>
+              <label><input type="checkbox" data-ov="safe" checked> Safe zone</label>
+              <label><input type="checkbox" data-ov="zones"> Layout zones</label>
+            </div>
+          </div>
+          <div class="ctl">
+            <span class="cl">Vision test</span>
+            <div class="seg" id="visseg" role="radiogroup" aria-label="Vision test">
+              <button data-vis="none" aria-checked="true" role="radio">Normal</button>
+              <button data-vis="deut" aria-checked="false" role="radio">Deuteranopia</button>
+              <button data-vis="prot" aria-checked="false" role="radio">Protanopia</button>
+              <button data-vis="gray" aria-checked="false" role="radio">Grayscale</button>
+            </div>
+          </div>
+          <div class="ctl">
+            <span class="cl">Distance</span>
+            <label class="checks"><input type="checkbox" id="arm"> Across the table</label>
+          </div>
+        </div>
+        <p class="note" id="cardnote"></p>
+      </div>
+
+      <!-- PACKAGING STUDIO -->
+      <div class="panelbox">
+        <div class="ph"><h2>Tuck box</h2><span>Sized to the real deck</span></div>
+        <div class="boxstage" id="boxstage">
+          <div class="scene3d" id="scene3d" aria-label="3D box preview, drag to rotate"><div class="cube" id="cube"></div></div>
+          <p class="drag">Drag to turn the box</p>
+        </div>
+        <div class="controls">
+          <div class="ctl">
+            <span class="cl">Card size</span>
+            <select id="csize" aria-label="Card size">
+              <option value="63x88">Poker, 63 x 88 mm</option>
+              <option value="70x120">Tarot, 70 x 120 mm</option>
+              <option value="44x63">Mini, 44 x 63 mm</option>
+              <option value="70x70">Square, 70 x 70 mm</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <span class="cl">Card stock</span>
+            <select id="stock" aria-label="Card stock">
+              <option value="0.30">300 gsm linen</option>
+              <option value="0.31" selected>310 gsm black core</option>
+              <option value="0.35">350 gsm premium</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <span class="cl">Cards <b id="countv">60</b></span>
+            <input type="range" id="count" min="18" max="120" value="60" aria-label="Number of cards">
+          </div>
+        </div>
+        <div class="dims" id="dims"></div>
+        <div class="dieline" id="dieline"></div>
+        <div class="legend"><span><i class="lg cut"></i>Cut</span><span><i class="lg fold"></i>Fold</span><span><i class="lg bl"></i>Bleed</span></div>
+        <p class="note">Sizes are estimates for planning. The final dieline always comes from your manufacturer's template for your exact card count and stock.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="spec" role="tabpanel" aria-labelledby="t-spec" hidden>
+    <h2 class="pt">What every file is checked against</h2>
+    <p class="lead">Most print problems come from file setup, not artwork. These are the defaults I work to, adjusted to your manufacturer's own requirements.</p>
+    <div class="tw"><table class="spec">
+      <thead><tr><th>Setting</th><th>Standard</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>Color</td><td>CMYK, printer's profile</td><td>Screens show RGB. Converting early avoids colors going dull at print.</td></tr>
+        <tr><td>Resolution</td><td>300 dpi at final size</td><td>Keeps art sharp. Fine line art goes to 600 dpi.</td></tr>
+        <tr><td>Bleed</td><td>3 mm each edge</td><td>Cutting drifts slightly, so art runs past the cut line.</td></tr>
+        <tr><td>Safe zone</td><td>3 mm inside the cut</td><td>Text, icons, and numbers never get trimmed off.</td></tr>
+        <tr><td>Text size</td><td>7 pt rules, 6 pt minimum</td><td>Readable at table distance, not just on screen.</td></tr>
+        <tr><td>Black</td><td>Rich black for large areas, pure black for text</td><td>Small text in rich black blurs if plates shift.</td></tr>
+        <tr><td>Finishes</td><td>Foil and spot UV on separate layers</td><td>Printers need them as their own plates.</td></tr>
+        <tr><td>Files</td><td>PDF/X, fonts embedded</td><td>What the printer opens is exactly what you approved.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="st">Playability checks</h3>
+    <div class="checksgrid">
+      <div><b>Color plus shape</b><span>Every card type has its own icon shape, so it still reads for colorblind players.</span></div>
+      <div><b>Symmetric backs</b><span>Card backs look the same upside down, so no one can tell how a card was held.</span></div>
+      <div><b>Real-size test prints</b><span>Layouts are printed at actual size and checked at arm's length before the full deck.</span></div>
+      <div><b>Sleeve fit</b><span>Card size matches common sleeves, so players can protect the deck.</span></div>
+    </div>
+
+    <h3 class="st">Go-to-market extras</h3>
+    <p class="lead" style="margin-bottom:0">Barcode space, age and safety marks for your target markets, and product mockups for your store page or crowdfunding campaign.</p>
+  </section>
+
+  <section id="plan" role="tabpanel" aria-labelledby="t-plan" hidden>
+    <h2 class="pt">About three weeks, plus a printed proof</h2>
+    <p class="lead">Built from your existing concept, rules, and card examples. Nothing about the game changes without your say.</p>
+    <div class="weeks">
+      <div class="wk"><b>Week 1</b><p>Layout system, icon set, and three fully finished sample cards from your examples.</p><small>You approve the look before the full deck starts.</small></div>
+      <div class="wk"><b>Week 2</b><p>Refined artwork and the full deck built on the approved layout.</p><small>You review every card as a proof sheet.</small></div>
+      <div class="wk"><b>Week 3</b><p>Packaging, dieline, print-ready files, and store or campaign mockups.</p><small>Files go to your manufacturer for a physical proof.</small></div>
+    </div>
+
+    <h3 class="st">What you receive</h3>
+    <div class="checksgrid">
+      <div><b>Print-ready PDFs</b><span>Card fronts, backs, and the box, set up to your printer's specs.</span></div>
+      <div><b>Editable source files</b><span>Every layout and asset, so future expansions reuse the same system.</span></div>
+      <div><b>Card template</b><span>Add new cards later without redesigning anything.</span></div>
+      <div><b>Mockups</b><span>Box and card renders for your store page and marketing.</span></div>
+    </div>
+
+    <div class="q">
+      <p>One question before we go further: how many unique cards are in the deck, and have you picked a manufacturer yet?</p>
+      <small>Those two decide the file setup and the box size, so I'd lock them in first.</small>
+    </div>
+  </section>
+</main>
+
+<script src="/app.js" defer></script>
+</body>
+</html>

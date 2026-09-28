@@ -1,0 +1,10 @@
+{
+  "name": "card-game-proposal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Card game production proposal with a live card layout and tuck box demo (static, Vercel-ready).",
+  "scripts": {
+    "dev": "npx --yes serve . -l 3000",
+    "deploy": "npx --yes vercel --prod"
+  }
+}
